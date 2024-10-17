@@ -11,7 +11,7 @@
     <header>
         <div class="h"><h1>Surxandaryo viloyati Angor tumani 47 maktab elektron kutubxonasi</h1></div>
         <div class="search"><input type="text" id="search" placeholder="Kitobni qidirish...">
-        <button onclick="searchBooks()" >Qidirish</button></div>
+        <button type="submit" onclick="searchBooks()" >Qidirish</button></div>
     </header>
  
     <main>
@@ -96,7 +96,6 @@
     "file": "files/qasoskorning_oltin_boshi.pdf",
     "image": "images/qasoskorning_oltin_boshi.jpg"
 },
-
 {
     "title": "Yetti Majlis",
     "author": "Jaloliddin Rumiy",
@@ -279,15 +278,21 @@
     "file": "files/saylanma.pdf",
     "image": "images/saylanma.jpg"
 }
-
         ];
 
         function searchBooks() {
             const query = document.getElementById('search').value.toLowerCase();
-            const filteredBooks = books.filter(book => book.title.toLowerCase().includes(query));
-            displayBooks(filteredBooks);
 
+             // Title yoki author ga mos keladigan kitoblarni filter qilish
+            const filteredBooks = books.filter(book => 
+            book.title.toLowerCase().includes(query) || 
+            book.author.toLowerCase().includes(query) 
+            );
+
+            // Natijalarni ekranga chiqarish
+            displayBooks(filteredBooks);
         }
+
 
         function displayBooks(books) {
             const booksDiv = document.getElementById('books');
