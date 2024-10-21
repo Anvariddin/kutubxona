@@ -1,320 +1,383 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kutubxona</title>
-    <link rel="stylesheet" href="styles.css">
-    
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <header>
-        <div class="h"><h1>Surxandaryo viloyati Angor tumani 47 maktab elektron kutubxonasi</h1></div>
-        <div class="search"><input type="text" id="search" placeholder="Kitobni qidirish...">
-        <button type="submit" onclick="searchBooks()" >Qidirish</button></div>
+      <div class="h">
+        <h1>
+          Surxandaryo viloyati Angor tumani 47 maktab elektron kutubxonasi
+        </h1>
+      </div>
+      <div class="search">
+        <input type="text" id="search" placeholder="Kitobni qidirish..." />
+        <button type="submit" onclick="searchBooks()">Qidirish</button>
+      </div>
     </header>
- 
+
     <main>
-        <div id="books"></div>
+      <div id="books"></div>
     </main>
     <script>
-        const books = [
-        {
-    "title": "Temur Tuzuklari",
-    "author": "Amir Temur",
-    "year": 1370,
-    "file": "files/temur_tuzuklari.pdf",
-    "image": "images/temur_tuzuklari.webp"
-},
+            const books = [
+              {
+                title: "Abdulla Avloniy",
+                author: "Yoshlar ishlari agentligi",
+                year: 2022,
+                file: "files/Abdulla_Avloniy.pdf",
+                image: "images/Abdulla_Avloniy.jpg",
+              },
+      {
+                title: "Abdulla Qodiriy",
+                author: "Yoshlar ishlari agentligi",
+                year: 2022,
+                file: "files/Abdulla_Qodiriy.pdf",
+                image: "images/Abdulla_Qodiriy.jpg",
+              }, 
+              {
+                title: "Abdulhamid Cho'lpon",
+                author: "Yoshlar ishlari agentligi",
+                year: 2022,
+                file: "files/Abdulhamid_Cho'lpon.pdf",
+                image: "images/Abdulhamid_Cho'lpon.jpg",
+              },
+      
+      {
+                title: "Mahmudxo'ja Behbudiy",
+                author: "Yoshlar ishlari agentligi",
+                year: 2022,
+                file: "files/Mahmudxo'ja_Behbudiy.pdf",
+                image: "images/Mahmudxo'ja_Behbudiy.jpg",
+              },
+ {
+                title: "Abdurauf Fitrat",
+                author: "Yoshlar ishlari agentligi",
+                year: 2022,
+                file: "files/Abdurauf_Fitrat.pdf",
+                image: "images/Abdurauf_Fitrat.jpg",
+              },
+                {
+                title: "Is'hoqxon To'ra",
+                author: "Yoshlar ishlari agentligi",
+                year: 2022,
+                file: "files/Is'hoqxon_To'ra.pdf",
+                image: "images/Is'hoqxon_To'ra.jpg",
+              },
 {
-    "title": "Ulug‘bek Xazinasi",
-    "author": "Odil Yoqubov",
-    "year": 1970,
-    "file": "files/ulugbek_xazinasi.pdf",
-    "image": "images/ulugbek_xazinasi.jpg"
-},
+                title: "Munavvar Qori Abdurashidxonov",
+                author: "Yoshlar ishlari agentligi",
+                year: 2022,
+                file: "files/Munavvar_Qori_Abdurashidxonov.pdf",
+                image: "images/Munavvar_Qori_Abdurashidxonov.jpg",
+              },
 {
-    "title": "Avlodlar Davoni",
-    "author": "Pirimqul Qodirov",
-    "year": 1981,
-    "file": "files/avlodlar_davoni.pdf",
-    "image": "images/avlodlar_davoni.jpg"
-},
-{
-    "title": "Besh Bolali Yigitcha",
-    "author": "Xudoyberdi To‘xtaboyev",
-    "year": 1969,
-    "file": "files/besh_bolali_yigitcha.pdf",
-    "image": "images/besh_bolali_yigitcha.jpg"
-},
-{
-    "title": "Sariq Devni Minib",
-    "author": "Xudoyberdi To‘xtaboyev",
-    "year": 1973,
-    "file": "files/sariq_devni_minib.pdf",
-    "image": "images/sariq_devni_minib.jpg"
-},
-{
-    "title": "Sariq Devning O‘limi",
-    "author": "Xudoyberdi To‘xtaboyev",
-    "year": 1974,
-    "file": "files/sariq_devning_olimi.pdf",
-    "image": "images/sariq_devning_olimi.jpg"
-},
-{
-    "title": "Ufq",
-    "author": "Said Ahmad",
-    "year": 1981,
-    "file": "files/ufq.pdf",
-    "image": "images/ufq.jpg"
-},
-{
-    "title": "Lolazor",
-    "author": "Murod Muhammad Do‘st",
-    "year": 1987,
-    "file": "files/lolazor.pdf",
-    "image": "images/lolazor.jpg"
-},
-{
-    "title": "Billur Qandillar",
-    "author": "Odil Yoqubov",
-    "year": 1985,
-    "file": "files/billur_qandillar.pdf",
-    "image": "images/billur_qandillar.jpg"
-},
-{
-    "title": "Radiy Fish",
-    "author": "Jaloliddin Rumiy",
-    "year": 1260,
-    "file": "files/radiy_fish.pdf",
-    "image": "images/radiy_fish.jpg"
-},
-{
-    "title": "Qasoskorning Oltin Boshi",
-    "author": "Xudoyberdi To‘xtaboyev",
-    "year": 1975,
-    "file": "files/qasoskorning_oltin_boshi.pdf",
-    "image": "images/qasoskorning_oltin_boshi.jpg"
-},
-{
-    "title": "Yetti Majlis",
-    "author": "Jaloliddin Rumiy",
-    "year": 1275,
-    "file": "files/etti_majlis.pdf",
-    "image": "images/etti_majlis.jpg"
-},
-{
-    "title": "Jimjitlik",
-    "author": "Said Ahmad",
-    "year": 1976,
-    "file": "files/jimjitlik.pdf",
-    "image": "images/jimjitlik.jpg"
-},
-{
-    "title": "Boburnoma",
-    "author": "Zahiriddin Muhammad Bobur",
-    "year": 1526,
-    "file": "files/boburnoma.pdf",
-    "image": "images/boburnoma.webp"
-},
-{
-    "title": "Uch Ildiz",
-    "author": "Pirimqul Qodirov",
-    "year": 1983,
-    "file": "files/uch_ildiz.pdf",
-    "image": "images/uch_ildiz.jpg"
-},
-{
-    "title": "Yulduzli Tunlar",
-    "author": "Pirimqul Qodirov",
-    "year": 1972,
-    "file": "files/yulduzli_tunlar.pdf",
-    "image": "images/yulduzli_tunlar.jpg"
-},
-{
-    "title": "Qiz Bolaga Tosh Otmang",
-    "author": "Xudoyberdi To‘htaboyev",
-    "year": 1985,
-    "file": "files/qiz_bolaga_tosh_otmang.pdf",
-    "image": "images/qiz_bolaga_tosh_otmang.jpg"
-},
-{
-    "title": "Shum Bola",
-    "author": "G‘afur G‘ulom",
-    "year": 1936,
-    "file": "files/shum_bola.pdf",
-    "image": "images/shum_bola.jpg"
-},
-{
-    "title": "O‘tkan Kunlar",
-    "author": "Abdulla Qodiriy",
-    "year": 1925,
-    "file": "files/otkan_kunlar.pdf",
-    "image": "images/otkan_kunlar.jpg"
-},
-{
-    "title": "Otamdan Qolgan Dalalar",
-    "author": "Tog‘ay Murod",
-    "year": 1987,
-    "file": "files/otamdan_qolgan_dalalar.pdf",
-    "image": "images/otamdan_qolgan_dalalar.jpg"
-},
-{
-    "title": "Askar Bola",
-    "author": "Chingiz Aytmatov",
-    "year": 1958,
-    "file": "files/askar_bola.pdf",
-    "image": "images/askar_bola.jpg"
-},
-{
-    "title": "Kecha va Kunduz",
-    "author": "Abdulhamid Cho‘lpon",
-    "year": 1936,
-    "file": "files/kecha_va_kunduz.pdf",
-    "image": "images/kecha_va_kunduz.jpg"
-},
-{
-    "title": "Martin Iden",
-    "author": "Jack London",
-    "year": 1909,
-    "file": "files/martin_iden.pdf",
-    "image": "images/martin_iden.jpg"
-},
-{
-    "title": "Navoiy",
-    "author": "Oybek",
-    "year": 1945,
-    "file": "files/navoiy.pdf",
-    "image": "images/navoiy.jpg"
-},
-{
-    "title": "Jinoyat va Jazo",
-    "author": "Fyodor Dostoevskiy",
-    "year": 1866,
-    "file": "files/jinoyat_va_jazo.pdf",
-    "image": "images/jinoyat_va_jazo.jpg"
-},
-{
-    "title": "Urush va Tinchlik 1",
-    "author": "Lev Tolstoy",
-    "year": 1869,
-    "file": "files/urush_va_tinchlik1.pdf",
-    "image": "images/urush_va_tinchlik.jpg"
-},
-{
-    "title": "Urush va Tinchlik 2",
-    "author": "Lev Tolstoy",
-    "year": 1869,
-    "file": "files/urush_va_tinchlik2.pdf",
-    "image": "images/urush_va_tinchlik.jpg"
-},
-{
-    "title": "Urush va Tinchlik 3",
-    "author": "Lev Tolstoy",
-    "year": 1869,
-    "file": "files/urush_va_tinchlik3.pdf",
-    "image": "images/urush_va_tinchlik.jpg"
-},
-{
-    "title": "Urush va Tinchlik 4",
-    "author": "Lev Tolstoy",
-    "year": 1869,
-    "file": "files/urush_va_tinchlik4.pdf",
-    "image": "images/urush_va_tinchlik.jpg"
-},
-{
-    "title": "Oltin Zanglamas",
-    "author": "Shuhrat",
-    "year": 1968,
-    "file": "files/oltin_zanglamas.pdf",
-    "image": "images/oltin_zanglamas.jpg"
-},
-{
-    "title": "Hayrat ul-Abror",
-    "author": "Alisher Navoiy",
-    "year": 1483,
-    "file": "files/hayrat_ul_abror.pdf",
-    "image": "images/hayrat_ul_abror.jpg"
-},
-{
-    "title": "Farhod va Shirin",
-    "author": "Alisher Navoiy",
-    "year": 1484,
-    "file": "files/farhod_va_shirin.pdf",
-    "image": "images/farhod_va_shirin.jpg"
-},
-{
-    "title": "Layli va Majnun",
-    "author": "Alisher Navoiy",
-    "year": 1484,
-    "file": "files/layli_va_majnun.pdf",
-    "image": "images/layli_va_majnun.jpg"
-},
-{
-    "title": "Sab'ai Sayyor",
-    "author": "Alisher Navoiy",
-    "year": 1485,
-    "file": "files/sabai_sayyor.pdf",
-    "image": "images/sabai_sayyor.jpg"
-},
-{
-    "title": "Saddi Iskandariy",
-    "author": "Alisher Navoiy",
-    "year": 1485,
-    "file": "files/saddi_iskandariy.pdf",
-    "image": "images/saddi_iskandariy.jpg"
-},
-{
-    "title": "Jannati Odamlar",
-    "author": "Xudoyberdi To‘htaboyev",
-    "year": 1989,
-    "file": "files/jannati_odamlar.pdf",
-    "image": "images/jannati_odamlar.jpg"
-},
-{
-    "title": "Saylanma",
-    "author": "Abdulla Oripov",
-    "year": 1980,
-    "file": "files/saylanma.pdf",
-    "image": "images/saylanma.jpg"
-}
-        ];
+                title: "G`ulom Zafariy",
+                author: "Yoshlar ishlari agentligi",
+                year: 2022,
+                file: "files/Gulom_Zafariy.pdf",
+                image: "images/Gulom_Zafariy.jpg",
+              },
 
-        function searchBooks() {
-            const query = document.getElementById('search').value.toLowerCase();
+              {
+                title: "Temur Tuzuklari",
+                author: "Amir Temur",
+                year: 1370,
+                file: "files/temur_tuzuklari.pdf",
+                image: "images/temur_tuzuklari.webp",
+              },
+              {
+                title: "Ulug‘bek Xazinasi",
+                author: "Odil Yoqubov",
+                year: 1970,
+                file: "files/ulugbek_xazinasi.pdf",
+                image: "images/ulugbek_xazinasi.jpg",
+              },
+              {
+                title: "Avlodlar Davoni",
+                author: "Pirimqul Qodirov",
+                year: 1981,
+                file: "files/avlodlar_davoni.pdf",
+                image: "images/avlodlar_davoni.jpg",
+              },
+              {
+                title: "Besh Bolali Yigitcha",
+                author: "Xudoyberdi To‘xtaboyev",
+                year: 1969,
+                file: "files/besh_bolali_yigitcha.pdf",
+                image: "images/besh_bolali_yigitcha.jpg",
+              },
+              {
+                title: "Sariq Devni Minib",
+                author: "Xudoyberdi To‘xtaboyev",
+                year: 1973,
+                file: "files/sariq_devni_minib.pdf",
+                image: "images/sariq_devni_minib.jpg",
+              },
+              {
+                title: "Sariq Devning O‘limi",
+                author: "Xudoyberdi To‘xtaboyev",
+                year: 1974,
+                file: "files/sariq_devning_olimi.pdf",
+                image: "images/sariq_devning_olimi.jpg",
+              },
+              {
+                title: "Ufq",
+                author: "Said Ahmad",
+                year: 1981,
+                file: "files/ufq.pdf",
+                image: "images/ufq.jpg",
+              },
+              {
+                title: "Lolazor",
+                author: "Murod Muhammad Do‘st",
+                year: 1987,
+                file: "files/lolazor.pdf",
+                image: "images/lolazor.jpg",
+              },
+              {
+                title: "Billur Qandillar",
+                author: "Odil Yoqubov",
+                year: 1985,
+                file: "files/billur_qandillar.pdf",
+                image: "images/billur_qandillar.jpg",
+              },
+              {
+                title: "Radiy Fish",
+                author: "Jaloliddin Rumiy",
+                year: 1260,
+                file: "files/radiy_fish.pdf",
+                image: "images/radiy_fish.jpg",
+              },
+              {
+                title: "Qasoskorning Oltin Boshi",
+                author: "Xudoyberdi To‘xtaboyev",
+                year: 1975,
+                file: "files/qasoskorning_oltin_boshi.pdf",
+                image: "images/qasoskorning_oltin_boshi.jpg",
+              },
+              {
+                title: "Yetti Majlis",
+                author: "Jaloliddin Rumiy",
+                year: 1275,
+                file: "files/etti_majlis.pdf",
+                image: "images/etti_majlis.jpg",
+              },
+              {
+                title: "Jimjitlik",
+                author: "Said Ahmad",
+                year: 1976,
+                file: "files/jimjitlik.pdf",
+                image: "images/jimjitlik.jpg",
+              },
+              {
+                title: "Boburnoma",
+                author: "Zahiriddin Muhammad Bobur",
+                year: 1526,
+                file: "files/boburnoma.pdf",
+                image: "images/boburnoma.webp",
+              },
+              {
+                title: "Uch Ildiz",
+                author: "Pirimqul Qodirov",
+                year: 1983,
+                file: "files/uch_ildiz.pdf",
+                image: "images/uch_ildiz.jpg",
+              },
+              {
+                title: "Yulduzli Tunlar",
+                author: "Pirimqul Qodirov",
+                year: 1972,
+                file: "files/yulduzli_tunlar.pdf",
+                image: "images/yulduzli_tunlar.jpg",
+              },
+              {
+                title: "Qiz Bolaga Tosh Otmang",
+                author: "Xudoyberdi To‘htaboyev",
+                year: 1985,
+                file: "files/qiz_bolaga_tosh_otmang.pdf",
+                image: "images/qiz_bolaga_tosh_otmang.jpg",
+              },
+              {
+                title: "Shum Bola",
+                author: "G‘afur G‘ulom",
+                year: 1936,
+                file: "files/shum_bola.pdf",
+                image: "images/shum_bola.jpg",
+              },
+              {
+                title: "O‘tkan Kunlar",
+                author: "Abdulla Qodiriy",
+                year: 1925,
+                file: "files/otkan_kunlar.pdf",
+                image: "images/otkan_kunlar.jpg",
+              },
+              {
+                title: "Otamdan Qolgan Dalalar",
+                author: "Tog‘ay Murod",
+                year: 1987,
+                file: "files/otamdan_qolgan_dalalar.pdf",
+                image: "images/otamdan_qolgan_dalalar.jpg",
+              },
+              {
+                title: "Askar Bola",
+                author: "Chingiz Aytmatov",
+                year: 1958,
+                file: "files/askar_bola.pdf",
+                image: "images/askar_bola.jpg",
+              },
+              {
+                title: "Kecha va Kunduz",
+                author: "Abdulhamid Cho‘lpon",
+                year: 1936,
+                file: "files/kecha_va_kunduz.pdf",
+                image: "images/kecha_va_kunduz.jpg",
+              },
+              {
+                title: "Martin Iden",
+                author: "Jack London",
+                year: 1909,
+                file: "files/martin_iden.pdf",
+                image: "images/martin_iden.jpg",
+              },
+              {
+                title: "Navoiy",
+                author: "Oybek",
+                year: 1945,
+                file: "files/navoiy.pdf",
+                image: "images/navoiy.jpg",
+              },
+              {
+                title: "Jinoyat va Jazo",
+                author: "Fyodor Dostoevskiy",
+                year: 1866,
+                file: "files/jinoyat_va_jazo.pdf",
+                image: "images/jinoyat_va_jazo.jpg",
+              },
+              {
+                title: "Urush va Tinchlik 1",
+                author: "Lev Tolstoy",
+                year: 1869,
+                file: "files/urush_va_tinchlik1.pdf",
+                image: "images/urush_va_tinchlik.jpg",
+              },
+              {
+                title: "Urush va Tinchlik 2",
+                author: "Lev Tolstoy",
+                year: 1869,
+                file: "files/urush_va_tinchlik2.pdf",
+                image: "images/urush_va_tinchlik.jpg",
+              },
+              {
+                title: "Urush va Tinchlik 3",
+                author: "Lev Tolstoy",
+                year: 1869,
+                file: "files/urush_va_tinchlik3.pdf",
+                image: "images/urush_va_tinchlik.jpg",
+              },
+              {
+                title: "Urush va Tinchlik 4",
+                author: "Lev Tolstoy",
+                year: 1869,
+                file: "files/urush_va_tinchlik4.pdf",
+                image: "images/urush_va_tinchlik.jpg",
+              },
+              {
+                title: "Oltin Zanglamas",
+                author: "Shuhrat",
+                year: 1968,
+                file: "files/oltin_zanglamas.pdf",
+                image: "images/oltin_zanglamas.jpg",
+              },
+              {
+                title: "Hayrat ul-Abror",
+                author: "Alisher Navoiy",
+                year: 1483,
+                file: "files/hayrat_ul_abror.pdf",
+                image: "images/hayrat_ul_abror.jpg",
+              },
+              {
+                title: "Farhod va Shirin",
+                author: "Alisher Navoiy",
+                year: 1484,
+                file: "files/farhod_va_shirin.pdf",
+                image: "images/farhod_va_shirin.jpg",
+              },
+              {
+                title: "Layli va Majnun",
+                author: "Alisher Navoiy",
+                year: 1484,
+                file: "files/layli_va_majnun.pdf",
+                image: "images/layli_va_majnun.jpg",
+              },
+              {
+                title: "Sab'ai Sayyor",
+                author: "Alisher Navoiy",
+                year: 1485,
+                file: "files/sabai_sayyor.pdf",
+                image: "images/sabai_sayyor.jpg",
+              },
+              {
+                title: "Saddi Iskandariy",
+                author: "Alisher Navoiy",
+                year: 1485,
+                file: "files/saddi_iskandariy.pdf",
+                image: "images/saddi_iskandariy.jpg",
+              },
+              {
+                title: "Jannati Odamlar",
+                author: "Xudoyberdi To‘htaboyev",
+                year: 1989,
+                file: "files/jannati_odamlar.pdf",
+                image: "images/jannati_odamlar.jpg",
+              },
+              {
+                title: "Saylanma",
+                author: "Abdulla Oripov",
+                year: 1980,
+                file: "files/saylanma.pdf",
+                image: "images/saylanma.jpg",
+              },
+            ];
 
-             // Title yoki author ga mos keladigan kitoblarni filter qilish
-            const filteredBooks = books.filter(book => 
-            book.title.toLowerCase().includes(query) || 
-            book.author.toLowerCase().includes(query) 
-            );
+            function searchBooks() {
+              const query = document.getElementById("search").value.toLowerCase();
 
-            // Natijalarni ekranga chiqarish
-            displayBooks(filteredBooks);
-        }
+              // Title yoki author ga mos keladigan kitoblarni filter qilish
+              const filteredBooks = books.filter(
+                (book) =>
+                  book.title.toLowerCase().includes(query) ||
+                  book.author.toLowerCase().includes(query)
+              );
 
+              // Natijalarni ekranga chiqarish
+              displayBooks(filteredBooks);
+            }
 
-        function displayBooks(books) {
-            const booksDiv = document.getElementById('books');
-            booksDiv.innerHTML = '';
-            books.forEach(book => {
-                const bookDiv = document.createElement('div');
-                bookDiv.className = 'book';
+            function displayBooks(books) {
+              const booksDiv = document.getElementById("books");
+              booksDiv.innerHTML = "";
+              books.forEach((book) => {
+                const bookDiv = document.createElement("div");
+                bookDiv.className = "book";
                 bookDiv.innerHTML = `
-                   <img src="${book.image}" alt="${book.title}" width="300" height="400">
-                    <h2>${book.title}</h2>
-                    <p>${book.author}</p>
-                    <p>${book.year}</p>
-                    <a href="${book.file}" download="${book.title}">   <button type="button">Yuklab olish</button></a>
-                `;
+                         <img src="${book.image}" alt="${book.title}" width="300" height="400">
+                          <h2>${book.title}</h2>
+                          <p>${book.author}</p>
+                          <p>${book.year}</p>
+                          <a href="${book.file}" download="${book.title}">   <button type="button">Yuklab olish</button></a>
+                      `;
                 booksDiv.appendChild(bookDiv);
-            });
-        }
+              });
+            }
 
-        // Sayt yuklanganda barcha kitoblarni ko'rsatish
-        window.onload = function() {
-            displayBooks(books);
-        };
+            // Sayt yuklanganda barcha kitoblarni ko'rsatish
+            window.onload = function () {
+              displayBooks(books);
+            };
     </script>
-</body>
+  </body>
 </html>
